@@ -19,7 +19,8 @@ class InitializationViewlet(ViewletBase):
         registry = component.getUtility(IRegistry)
         settings = registry.forInterface(IXMPPSettings, check=False)
 
-        root = getNavigationRoot(self.context)
+        #root = getNavigationRoot(self.context)
+        root = '/'.join(plone.api.portal.get().getPhysicalPath())
         username = member.getId()
         self.jid = u"{}@{}".format(username, settings.xmpp_domain)
         self.auto_subscribe = settings.auto_subscribe
